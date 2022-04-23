@@ -26,14 +26,14 @@ public class Category : Entity
             .IsGreaterOrEqualsThan(Name.Length, 3, "Name", "The name must have at least 3 characters")
             .IsNotNullOrEmpty(CreatedBy, "CreatedBy")
             .IsNotNullOrEmpty(UpdatedBy, "UpdatedBy");
-
-
         AddNotifications(contract);
     }
-    public void Update(string name, bool active)
+    public void Update(string name, bool active, string updatedBy)
     {
         Name = name;
         Active = active;
+        UpdatedBy = updatedBy;
+        UpdatedAt = DateTime.Now;
         Validate();
     }
 }

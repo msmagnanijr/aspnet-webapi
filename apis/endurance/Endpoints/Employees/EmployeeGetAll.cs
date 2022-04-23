@@ -1,30 +1,19 @@
 namespace Endurance.Endpoints.Employees;
 
-using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
+using Endurance.Infrastructure.Data;
 using Dapper;
 
 public class EmployeeGetAll
 {
-    public static string Template => "/employee";
+    public static string Template => "/employees";
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
-    public static IResult Action(int? page, int? rows, IConfiguration configuration)
+    [Authorize(Policy = "EmployeePolicy")]
+    public static async Task<IResult> Action(int? page, int? rows, QueryAllUsersWithClaimName query)
     {
-        var connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
-
-        var query = @"select Email, ClaimValue as Name
-            from AspNetUsers u inner
-            join AspNetUserClaims c
-            on u.id = c.UserId and claimtype = 'Name'
-            order by name
-            OFFSET (@page -1 ) * @rows ROWS FETCH NEXT @rows ROWS ONLY";
-
-        var employee = connection.Query<EmployeeResponse>(
-            query,
-            new { page, rows }
-        );
-
-        return Results.Ok(employee);
+        var result = await query.Execute(page.Value, rows.Value);
+        return Results.Ok(result);
     }
 }
