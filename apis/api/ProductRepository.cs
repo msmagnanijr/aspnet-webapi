@@ -2,6 +2,12 @@ public static class ProductRepository
 {
     public static List<Product>? Products { get; set; }
 
+    public static void Init(IConfiguration configuration)
+    {
+        var products = configuration.GetSection("products").Get<List<Product>>();
+        Products = products;
+    }
+
     public static Product GetById(string code)
     {
         return Products?.FirstOrDefault(p => p.Code == code);
