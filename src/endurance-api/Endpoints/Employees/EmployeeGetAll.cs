@@ -1,9 +1,4 @@
 namespace Endurance.Endpoints.Employees;
-
-using Microsoft.AspNetCore.Authorization;
-using Endurance.Infrastructure.Data;
-using Dapper;
-
 public class EmployeeGetAll
 {
     public static string Template => "/employees";

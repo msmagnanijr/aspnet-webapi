@@ -1,5 +1,3 @@
-using Flunt.Validations;
-
 namespace Endurance.Domain.Products;
 public class Category : Entity
 {

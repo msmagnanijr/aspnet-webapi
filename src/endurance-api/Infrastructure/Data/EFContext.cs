@@ -1,11 +1,4 @@
 namespace Endurance.Infrastructure.Data;
-
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Endurance.Domain.Products;
-using Flunt.Notifications;
-
 public class EFContext : IdentityDbContext<IdentityUser>
 {
     public DbSet<Product> Products { get; set; }

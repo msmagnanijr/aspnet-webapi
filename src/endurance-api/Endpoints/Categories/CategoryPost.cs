@@ -1,10 +1,4 @@
 namespace Endurance.Endpoints.Categories;
-
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
-using Endurance.Domain.Products;
-using Endurance.Infrastructure.Data;
-
 public class CategoryPost
 {
     public static string Template => "/categories";

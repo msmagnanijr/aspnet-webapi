@@ -1,5 +1,3 @@
-using Flunt.Notifications;
-
 namespace Endurance.Domain;
 public abstract class Entity : Notifiable<Notification>
 {

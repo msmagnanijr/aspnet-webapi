@@ -1,10 +1,4 @@
 namespace Endurance.Endpoints.Categories;
-
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
-using Endurance.Infrastructure.Data;
-
 public class CategoryPut
 {
     public static string Template => "/categories/{id:guid}";

@@ -1,9 +1,4 @@
-using Dapper;
-using Endurance.Endpoints.Employees;
-using Microsoft.Data.SqlClient;
-
 namespace Endurance.Infrastructure.Data;
-
 public class QueryAllUsersWithClaimName
 {
     private readonly IConfiguration configuration;
