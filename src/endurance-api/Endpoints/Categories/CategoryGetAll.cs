@@ -5,7 +5,8 @@ public class CategoryGetAll
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
-    [Authorize(Policy = "EmployeePolicy")]
+    //[Authorize(Policy = "EmployeePolicy")]
+    [AllowAnonymous]
     public static IResult Action(EFContext eFContext)
     {
         var categories = eFContext.Categories.ToList();
